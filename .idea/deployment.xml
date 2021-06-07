@@ -16,6 +16,10 @@
             <excludedPath local="true" path="/bitrix/modules" />
             <excludedPath path="/bitrix/license_key.php" />
             <excludedPath path="/bitrix/updates" />
+            <excludedPath path="/bitrix/.settings.php" />
+            <excludedPath local="true" path="/bitrix/.settings.php" />
+            <excludedPath path="/bitrix/php_interface/dbconn.php" />
+            <excludedPath local="true" path="/bitrix/php_interface/dbconn.php" />
           </excludedPaths>
         </serverdata>
       </paths>

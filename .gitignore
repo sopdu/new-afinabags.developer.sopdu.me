@@ -39,3 +39,4 @@
 /bitrix/virtual_file_system.php
 /bitrix/php_interface/
 /bitrix/.settings.php
+/bitrix/php_interface/dbconn.php
