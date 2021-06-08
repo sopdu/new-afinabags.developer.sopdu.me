@@ -144,7 +144,17 @@ Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/bundle.js?ver=371827");
             </div>
             <div class="footer-content-bottom">
                 <div class="footer-content-bottom-copyright">© 2021 Afina. Все права защищены</div>
-                <a href="#" class="footer-content-bottom__politic">Политика конфиденциальности</a>
+                <?$APPLICATION->IncludeComponent(
+                    "sopdu:simple_link",
+                    ".default",
+                    array(
+                        "COMPONENT_TEMPLATE" => ".default",
+                        "ACTIVE" => "Y",
+                        "TEXT" => "Политика конфиденциальности",
+                        "LINK" => "#"
+                    ),
+                    false
+                );?>
                 <?$APPLICATION->IncludeComponent(
                     "sopdu:pay_ico",
                     ".default",
