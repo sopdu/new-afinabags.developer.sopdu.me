@@ -16,7 +16,7 @@
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"domEl\": () => (/* binding */ domEl),\n/* harmony export */   \"domElems\": () => (/* binding */ domElems),\n/* harmony export */   \"toggleClass\": () => (/* binding */ toggleClass)\n/* harmony export */ });\n/* provided dependency */ var $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\nfunction domEl(selector) {\n  var element = document.querySelector(selector);\n  return element ? element : null;\n}\nfunction domElems(selector) {\n  var element = document.querySelectorAll(selector);\n  return element.length ? element : null;\n}\nfunction toggleClass(element, className) {\n  element.classList.contains(className) ? element.classList.remove(className) : element.classList.add(className);\n}\nvar selects = domElems('.custom-select');\n\nif (selects) {\n  selects.forEach(function (item) {\n    initSelect(item);\n  });\n  document.body.addEventListener('click', function (e) {\n    var target = e.target;\n\n    if (target.classList.contains('custom-select-container-block-item') || target.closest('.custom-select-container-block-item')) {\n      var item = target.classList.contains('custom-select-container-block-item') ? target : target.closest('.custom-select-container-block-item');\n      var value = item.getAttribute('data-value');\n      var element = item.getAttribute('data-element');\n      var text = item.textContent.trim();\n\n      if (text.length > 16) {\n        text = text.slice(0, 14) + '...';\n      }\n\n      var select = domEl('.custom-select.open');\n      select.querySelector('.custom-select-input').value = value;\n      var input = select.querySelector('.custom-select-input');\n\n      if (element != 'null') {\n        select.querySelector('.custom-select-title span').innerHTML = element;\n      } else {\n        select.querySelector('.custom-select-title span').textContent = text;\n      }\n\n      removeSelectContainer();\n    }\n  });\n}\n\ndocument.body.addEventListener('click', function (e) {\n  var target = e.target;\n  var classList = ['custom-select-container-block', 'custom-select'];\n\n  if (target.closest('.custom-select') || target.closest('.custom-select-container-block') || target.classList.contains('custom-select-container-block') || target.classList.contains('custom-select')) {} else {\n    removeSelectContainer();\n  }\n});\n\nfunction removeSelectContainer() {\n  if (selects) {\n    var oldContainer = domEl('.custom-select-container-block');\n\n    if (oldContainer) {\n      oldContainer.remove();\n    }\n\n    selects.forEach(function (item) {\n      return item.classList.remove('open');\n    });\n  }\n}\n\nfunction initSelect(select) {\n  select.addEventListener('click', function () {\n    if (select.classList.contains('open')) {\n      removeSelectContainer();\n    } else {\n      removeSelectContainer();\n      select.classList.add('open');\n      createList(select);\n    }\n  });\n}\n\nfunction createList(select) {\n  var container = document.createElement('div');\n  container.classList.add('custom-select-container-block');\n  document.body.append(container);\n\n  if (select.closest('.modal-map')) {\n    var x = select.getBoundingClientRect().x;\n    var y = select.getBoundingClientRect().y;\n    container.style.top = $(window).scrollTop() + y + select.offsetHeight + 'px';\n    container.style.left = x + 'px';\n    container.style.minWidth = select.offsetWidth + 'px';\n  } else {\n    container.style.top = select.offsetTop + select.offsetHeight + 'px';\n    container.style.left = select.offsetLeft + 'px';\n    container.style.minWidth = select.offsetWidth + 'px';\n  }\n\n  var selectItems = select.querySelectorAll('.custom-select-item');\n  var str = '';\n  selectItems.forEach(function (item) {\n    var classes = '';\n\n    if (item.dataset.classList) {\n      classes = item.dataset.classList;\n    } else {\n      classes = '';\n    }\n\n    var types = '';\n\n    if (item.dataset.type) {\n      types = \"data-type=\\\"\".concat(item.dataset.type, \"\\\"\");\n    } else {\n      types = '';\n    }\n\n    if (item.getAttribute('data-tag') == 'A') {\n      str += \"<a href=\\\"\".concat(item.getAttribute('data-href'), \"\\\" class=\\\"custom-select-container-block-item \").concat(classes, \"\\\" \").concat(types, \" data-value=\\\"\").concat(item.getAttribute('data-value'), \"\\\">\").concat(item.textContent, \"</a>\");\n    } else {\n      str += \"<div class=\\\"custom-select-container-block-item \".concat(classes, \"\\\" \").concat(types, \" data-value=\\\"\").concat(item.getAttribute('data-value'), \"\\\" data-element=\\\"\").concat(item.getAttribute('data-element'), \"\\\">\").concat(item.textContent, \"</div>\");\n    }\n  });\n  container.innerHTML = str;\n}\n\n//# sourceURL=webpack://fizika/./src/custom-select/custom-select.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"domEl\": () => (/* binding */ domEl),\n/* harmony export */   \"domElems\": () => (/* binding */ domElems),\n/* harmony export */   \"toggleClass\": () => (/* binding */ toggleClass)\n/* harmony export */ });\n/* provided dependency */ var $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\nfunction domEl(selector) {\n  var element = document.querySelector(selector);\n  return element ? element : null;\n}\nfunction domElems(selector) {\n  var element = document.querySelectorAll(selector);\n  return element.length ? element : null;\n}\nfunction toggleClass(element, className) {\n  element.classList.contains(className) ? element.classList.remove(className) : element.classList.add(className);\n}\nvar selects = domElems('.custom-select');\n\nif (selects) {\n  selects.forEach(function (item) {\n    initSelect(item);\n  });\n  document.body.addEventListener('click', function (e) {\n    var target = e.target;\n\n    if (target.classList.contains('custom-select-container-block-item') || target.closest('.custom-select-container-block-item')) {\n      var item = target.classList.contains('custom-select-container-block-item') ? target : target.closest('.custom-select-container-block-item');\n      var value = item.getAttribute('data-value');\n      var element = item.getAttribute('data-element');\n      var text = item.textContent.trim();\n\n      if (text.length > 16) {\n        text = text.slice(0, 14) + '...';\n      }\n\n      var select = domEl('.custom-select.open');\n      select.querySelector('.custom-select-input').value = value;\n      var input = select.querySelector('.custom-select-input');\n\n      if (element != 'null') {\n        select.querySelector('.custom-select-title span').innerHTML = element;\n      } else {\n        select.querySelector('.custom-select-title span').textContent = text;\n      }\n\n      removeSelectContainer();\n    }\n  });\n}\n\ndocument.body.addEventListener('click', function (e) {\n  var target = e.target;\n  var classList = ['custom-select-container-block', 'custom-select'];\n\n  if (target.closest('.custom-select') || target.closest('.custom-select-container-block') || target.classList.contains('custom-select-container-block') || target.classList.contains('custom-select')) {} else {\n    removeSelectContainer();\n  }\n});\n\nfunction removeSelectContainer() {\n  if (selects) {\n    var oldContainer = domEl('.custom-select-container-block');\n\n    if (oldContainer) {\n      oldContainer.remove();\n    }\n\n    selects.forEach(function (item) {\n      return item.classList.remove('open');\n    });\n  }\n}\n\nfunction initSelect(select) {\n  select.addEventListener('click', function () {\n    if (select.classList.contains('open')) {\n      removeSelectContainer();\n    } else {\n      removeSelectContainer();\n      select.classList.add('open');\n      createList(select);\n    }\n  });\n}\n\nfunction createList(select) {\n  var container = document.createElement('div');\n  container.classList.add('custom-select-container-block');\n  document.body.append(container);\n\n  if (select.closest('.modal-map')) {\n    var x = select.getBoundingClientRect().x;\n    var y = select.getBoundingClientRect().y;\n    container.style.top = $(window).scrollTop() + y + select.offsetHeight + 'px';\n    container.style.left = x + 'px';\n    container.style.minWidth = select.offsetWidth + 'px';\n  } else {\n    if ($(window).width() < 1100 && $(select).hasClass('catalog-header__filter-item')) {\n      container.style.top = select.offsetTop + select.offsetHeight + 'px';\n      container.style.right = $(window).width() - $(select).width() - select.offsetLeft + 'px';\n      container.style.minWidth = select.offsetWidth + 'px';\n    } else {\n      container.style.top = select.offsetTop + select.offsetHeight + 'px';\n      container.style.left = select.offsetLeft + 'px';\n      container.style.minWidth = select.offsetWidth + 'px';\n    }\n  }\n\n  var selectItems = select.querySelectorAll('.custom-select-item');\n  var str = '';\n  selectItems.forEach(function (item) {\n    var classes = '';\n\n    if (item.dataset.classList) {\n      classes = item.dataset.classList;\n    } else {\n      classes = '';\n    }\n\n    var types = '';\n\n    if (item.dataset.type) {\n      types = \"data-type=\\\"\".concat(item.dataset.type, \"\\\"\");\n    } else {\n      types = '';\n    }\n\n    if (item.getAttribute('data-tag') == 'A') {\n      str += \"<a href=\\\"\".concat(item.getAttribute('data-href'), \"\\\" class=\\\"custom-select-container-block-item \").concat(classes, \"\\\" \").concat(types, \" data-value=\\\"\").concat(item.getAttribute('data-value'), \"\\\">\").concat(item.textContent, \"</a>\");\n    } else {\n      str += \"<div class=\\\"custom-select-container-block-item \".concat(classes, \"\\\" \").concat(types, \" data-value=\\\"\").concat(item.getAttribute('data-value'), \"\\\" data-element=\\\"\").concat(item.getAttribute('data-element'), \"\\\">\").concat(item.textContent, \"</div>\");\n    }\n  });\n  container.innerHTML = str;\n}\n\n//# sourceURL=webpack://fizika/./src/custom-select/custom-select.js?");
 
 /***/ }),
 
@@ -150,7 +150,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("/* provided dependency */ var $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\nif ($(window).scrollTop() > 600) {\n  $('.header').addClass('open');\n} else {\n  $('.header').removeClass('open');\n}\n\nvar windowPositionOld = window.pageYOffset;\nvar windowScrollHeaderFlag = true;\nwindow.addEventListener('scroll', function () {\n  if ($(window).scrollTop() > 600) {\n    if (windowScrollHeaderFlag) {\n      var windowPositionNew = window.pageYOffset;\n      var value = windowPositionNew - windowPositionOld;\n      value > 15 ? headerHide() : headerShow();\n      windowPositionOld = windowPositionNew;\n      setTimeout(function () {\n        windowScrollHeaderFlag = true;\n      }, 120);\n    }\n\n    windowScrollHeaderFlag = false;\n  } else {\n    $('.header').removeClass('open');\n    $('.header').removeClass('hidden');\n  }\n});\n\nfunction headerHide() {\n  $('.header').addClass('hidden');\n}\n\nfunction headerShow() {\n  if ($(window).scrollTop() > 600) {\n    $('.header').addClass('open');\n  } else {\n    $('.header').removeClass('open');\n  }\n\n  $('.header').removeClass('hidden');\n}\n\n//# sourceURL=webpack://fizika/./src/js/header.js?");
+eval("/* provided dependency */ var $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\nif (!$('.header').hasClass('header-static')) {\n  if ($(window).scrollTop() > 800) {\n    $('.header').addClass('open');\n  } else {\n    $('.header').removeClass('open');\n  }\n\n  var windowPositionOld = window.pageYOffset;\n  var windowScrollHeaderFlag = true;\n  window.addEventListener('scroll', function () {\n    if ($(window).scrollTop() > 800) {\n      if (windowScrollHeaderFlag) {\n        var windowPositionNew = window.pageYOffset;\n        var value = windowPositionNew - windowPositionOld;\n        value > 15 ? headerHide() : headerShow();\n        windowPositionOld = windowPositionNew;\n        setTimeout(function () {\n          windowScrollHeaderFlag = true;\n        }, 120);\n      }\n\n      windowScrollHeaderFlag = false;\n    } else {\n      windowPositionOld = window.pageYOffset;\n      $('.header').removeClass('open');\n      $('.header').removeClass('hidden');\n    }\n  });\n}\n\nfunction headerHide() {\n  $('.header').addClass('hidden');\n}\n\nfunction headerShow() {\n  if ($(window).scrollTop() > 600) {\n    $('.header').addClass('open');\n  } else {\n    $('.header').removeClass('open');\n  }\n\n  $('.header').removeClass('hidden');\n}\n\n//# sourceURL=webpack://fizika/./src/js/header.js?");
 
 /***/ }),
 
@@ -214,7 +214,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _fun
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery_mask_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery-mask-plugin */ \"./node_modules/jquery-mask-plugin/dist/jquery.mask.js\");\n/* harmony import */ var jquery_mask_plugin__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery_mask_plugin__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./functions */ \"./src/js/functions.js\");\n/* provided dependency */ var $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n\n\nvar modalWindowPhone = $('.js-modal-window-phone');\nvar modalWindowInputELement = $('.modal-window-input-wrap');\nmodalWindowInputELement.find('input').focus(function () {\n  $(this).closest('.modal-window-input-wrap').addClass('focused-not-empty');\n  console.log('focus');\n});\nmodalWindowInputELement.find('.modal-window-input-wrap-placeholder').click(function () {\n  $(this).closest('.modal-window-input-wrap').find('input').focus();\n  $(this).closest('.modal-window-input-wrap').find('input').trigger('focus');\n});\nmodalWindowInputELement.find('input').blur(function () {\n  if ($(this).val()) {} else {\n    $(this).closest('.modal-window-input-wrap').removeClass('focused-not-empty');\n  }\n});\nmodalWindowPhone.mask('+7 000 000 00 00');\nvar modalWindow = $('.modal-window-login');\nvar modalWindowCounter = $('.js-modal-counter');\nvar modalWindowPhoneContent = $('.modal-window-content-wrap-phone');\nvar modalWindowEmailContent = $('.modal-window-content-wrap-email');\nvar modalWindowCodeContent = $('.modal-window-content-wrap-code');\nvar modalWindowOpenEmailBtn = $('.js-open-email');\nvar modalWindowOpenPhoneBtn = $('.js-open-phone');\nvar modalWindowOpenCodeBtn = $('.js-open-code');\nvar modalWindowReturnBtn = $('.js-return');\nvar modalWindowCloseArea = $('.modal-window-login .modal-window-close-area');\nvar modalWindowCloseBtn = $('.modal-window-login .modal-window-close');\nvar headUserIcon = $('.header-top__control-item.header-top__user');\nheadUserIcon.on('click', function () {\n  openModalLogin();\n});\nmodalWindowCloseBtn.on('click', function () {\n  closeModalLogin();\n});\nmodalWindowCloseArea.on('click', function () {\n  closeModalLogin();\n});\nmodalWindowOpenEmailBtn.on('click', function () {\n  modalWindowPhoneContent.css('display', 'none');\n  modalWindow.attr('data-prev', 'email');\n  modalWindowEmailContent.fadeIn({\n    start: function start() {\n      $(this).css('display', 'flex');\n    }\n  });\n});\nmodalWindowOpenPhoneBtn.on('click', function () {\n  modalWindowEmailContent.css('display', 'none');\n  modalWindow.attr('data-prev', '');\n  modalWindowPhoneContent.fadeIn({\n    start: function start() {\n      $(this).css('display', 'flex');\n    }\n  });\n});\nmodalWindowOpenCodeBtn.on('click', function () {\n  modalWindowEmailContent.css('display', 'none');\n  modalWindowPhoneContent.css('display', 'none');\n  modalWindowCodeContent.fadeIn({\n    start: function start() {\n      $(this).css('display', 'flex');\n    }\n  });\n  var counterValue = 60;\n  modalWindowCounter.text(counterValue);\n  var counter = setInterval(function () {\n    counterValue--;\n    modalWindowCounter.text(counterValue);\n\n    if (counterValue == 0) {\n      stopInterval();\n    }\n  }, 1000);\n\n  function stopInterval() {\n    stopInterval(counter);\n  }\n});\nmodalWindowReturnBtn.on('click', function () {\n  if (modalWindow.attr('data-prev') == 'email') {\n    modalWindowCodeContent.css('display', 'none');\n    modalWindowPhoneContent.css('display', 'none');\n    modalWindowEmailContent.fadeIn({\n      start: function start() {\n        $(this).css('display', 'flex');\n      }\n    });\n  } else {\n    modalWindowCodeContent.css('display', 'none');\n    modalWindowEmailContent.css('display', 'none');\n    modalWindowPhoneContent.fadeIn({\n      start: function start() {\n        $(this).css('display', 'flex');\n      }\n    });\n  }\n});\n\nfunction openModalLogin() {\n  modalWindow.fadeIn({\n    start: function start() {\n      $(this).css('display', 'flex');\n    }\n  });\n  (0,_functions__WEBPACK_IMPORTED_MODULE_1__.bodyOverflow)();\n}\n\nfunction closeModalLogin() {\n  modalWindow.fadeOut();\n  (0,_functions__WEBPACK_IMPORTED_MODULE_1__.bodyOverflow)();\n}\n\n//# sourceURL=webpack://fizika/./src/js/modal-window.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery_mask_plugin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery-mask-plugin */ \"./node_modules/jquery-mask-plugin/dist/jquery.mask.js\");\n/* harmony import */ var jquery_mask_plugin__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery_mask_plugin__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./functions */ \"./src/js/functions.js\");\n/* provided dependency */ var $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n\n\nvar modalWindowPhone = $('.js-modal-window-phone');\nvar modalWindowInputELement = $('.modal-window-input-wrap');\nmodalWindowInputELement.find('input').focus(function () {\n  $(this).closest('.modal-window-input-wrap').addClass('focused-not-empty');\n});\nmodalWindowInputELement.find('.modal-window-input-wrap-placeholder').click(function () {\n  $(this).closest('.modal-window-input-wrap').find('input').focus();\n  $(this).closest('.modal-window-input-wrap').find('input').trigger('focus');\n});\nmodalWindowInputELement.find('input').blur(function () {\n  if ($(this).val()) {} else {\n    $(this).closest('.modal-window-input-wrap').removeClass('focused-not-empty');\n  }\n});\nmodalWindowPhone.mask('+7 000 000 00 00');\nvar modalWindow = $('.modal-window-login');\nvar modalWindowCounter = $('.js-modal-counter');\nvar modalWindowPhoneContent = $('.modal-window-content-wrap-phone');\nvar modalWindowEmailContent = $('.modal-window-content-wrap-email');\nvar modalWindowCodeContent = $('.modal-window-content-wrap-code');\nvar modalWindowOpenEmailBtn = $('.js-open-email');\nvar modalWindowOpenPhoneBtn = $('.js-open-phone');\nvar modalWindowOpenCodeBtn = $('.js-open-code');\nvar modalWindowReturnBtn = $('.js-return');\nvar modalWindowCloseArea = $('.modal-window-login .modal-window-close-area');\nvar modalWindowCloseBtn = $('.modal-window-login .modal-window-close');\nvar headUserIcon = $('.header-top__control-item.header-top__user');\nheadUserIcon.on('click', function () {\n  openModalLogin();\n});\nmodalWindowCloseBtn.on('click', function () {\n  closeModalLogin();\n});\nmodalWindowCloseArea.on('click', function () {\n  closeModalLogin();\n});\nmodalWindowOpenEmailBtn.on('click', function () {\n  modalWindowPhoneContent.css('display', 'none');\n  modalWindow.attr('data-prev', 'email');\n  modalWindowEmailContent.fadeIn({\n    start: function start() {\n      $(this).css('display', 'flex');\n    }\n  });\n});\nmodalWindowOpenPhoneBtn.on('click', function () {\n  modalWindowEmailContent.css('display', 'none');\n  modalWindow.attr('data-prev', '');\n  modalWindowPhoneContent.fadeIn({\n    start: function start() {\n      $(this).css('display', 'flex');\n    }\n  });\n});\nmodalWindowOpenCodeBtn.on('click', function () {\n  modalWindowEmailContent.css('display', 'none');\n  modalWindowPhoneContent.css('display', 'none');\n  modalWindowCodeContent.fadeIn({\n    start: function start() {\n      $(this).css('display', 'flex');\n    }\n  });\n  var counterValue = 60;\n  modalWindowCounter.text(counterValue);\n  var counter = setInterval(function () {\n    counterValue--;\n    modalWindowCounter.text(counterValue);\n\n    if (counterValue == 0) {\n      stopInterval();\n    }\n  }, 1000);\n\n  function stopInterval() {\n    stopInterval(counter);\n  }\n});\nmodalWindowReturnBtn.on('click', function () {\n  if (modalWindow.attr('data-prev') == 'email') {\n    modalWindowCodeContent.css('display', 'none');\n    modalWindowPhoneContent.css('display', 'none');\n    modalWindowEmailContent.fadeIn({\n      start: function start() {\n        $(this).css('display', 'flex');\n      }\n    });\n  } else {\n    modalWindowCodeContent.css('display', 'none');\n    modalWindowEmailContent.css('display', 'none');\n    modalWindowPhoneContent.fadeIn({\n      start: function start() {\n        $(this).css('display', 'flex');\n      }\n    });\n  }\n});\n\nfunction openModalLogin() {\n  modalWindow.fadeIn({\n    start: function start() {\n      $(this).css('display', 'flex');\n    }\n  });\n  (0,_functions__WEBPACK_IMPORTED_MODULE_1__.bodyOverflow)();\n}\n\nfunction closeModalLogin() {\n  modalWindow.fadeOut();\n  (0,_functions__WEBPACK_IMPORTED_MODULE_1__.bodyOverflow)();\n}\n\nvar modalWindowBuy = $('.modal-window-buy');\nvar modalWindowBuyOpen = $('.js-open-modal-buy');\nvar modalWindowBuyCloseArea = $('.modal-window-buy .modal-window-close-area');\nvar modalWindowBuyCloseBtn = $('.modal-window-buy .modal-window-close');\nmodalWindowBuyOpen.on('click', function () {\n  openModalBuy();\n});\nmodalWindowBuyCloseArea.on('click', function () {\n  closeModalBuy();\n});\nmodalWindowBuyCloseBtn.on('click', function () {\n  closeModalBuy();\n});\n\nfunction openModalBuy() {\n  modalWindowBuy.fadeIn({\n    start: function start() {\n      $(this).css('display', 'flex');\n    }\n  });\n  (0,_functions__WEBPACK_IMPORTED_MODULE_1__.bodyOverflow)();\n}\n\nfunction closeModalBuy() {\n  modalWindowBuy.fadeOut();\n  (0,_functions__WEBPACK_IMPORTED_MODULE_1__.bodyOverflow)();\n}\n\n//# sourceURL=webpack://fizika/./src/js/modal-window.js?");
 
 /***/ }),
 
@@ -267,7 +267,7 @@ eval("/* provided dependency */ var $ = __webpack_require__(/*! jquery */ \"./no
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/access.png\");\n\n//# sourceURL=webpack://fizika/./src/image/access.png?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/access.png\");\n\n//# sourceURL=webpack://fizika/./src/image/access.png?");
 
 /***/ }),
 
@@ -278,7 +278,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/card-mobile-2.png\");\n\n//# sourceURL=webpack://fizika/./src/image/card-mobile-2.png?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/card-mobile-2.png\");\n\n//# sourceURL=webpack://fizika/./src/image/card-mobile-2.png?");
 
 /***/ }),
 
@@ -289,7 +289,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/card-mobile.png\");\n\n//# sourceURL=webpack://fizika/./src/image/card-mobile.png?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/card-mobile.png\");\n\n//# sourceURL=webpack://fizika/./src/image/card-mobile.png?");
 
 /***/ }),
 
@@ -300,7 +300,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/card-promo-1.png\");\n\n//# sourceURL=webpack://fizika/./src/image/card-promo-1.png?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/card-promo-1.png\");\n\n//# sourceURL=webpack://fizika/./src/image/card-promo-1.png?");
 
 /***/ }),
 
@@ -311,7 +311,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/card-promo-2.png\");\n\n//# sourceURL=webpack://fizika/./src/image/card-promo-2.png?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/card-promo-2.png\");\n\n//# sourceURL=webpack://fizika/./src/image/card-promo-2.png?");
 
 /***/ }),
 
@@ -322,7 +322,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/catalog-item.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/catalog-item.jpg?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/catalog-item.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/catalog-item.jpg?");
 
 /***/ }),
 
@@ -333,7 +333,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/footer-logo-big.png\");\n\n//# sourceURL=webpack://fizika/./src/image/footer-logo-big.png?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/footer-logo-big.png\");\n\n//# sourceURL=webpack://fizika/./src/image/footer-logo-big.png?");
 
 /***/ }),
 
@@ -344,7 +344,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/four-1.png\");\n\n//# sourceURL=webpack://fizika/./src/image/four-1.png?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/four-1.png\");\n\n//# sourceURL=webpack://fizika/./src/image/four-1.png?");
 
 /***/ }),
 
@@ -355,7 +355,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/four-2.png\");\n\n//# sourceURL=webpack://fizika/./src/image/four-2.png?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/four-2.png\");\n\n//# sourceURL=webpack://fizika/./src/image/four-2.png?");
 
 /***/ }),
 
@@ -366,7 +366,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/four-3.png\");\n\n//# sourceURL=webpack://fizika/./src/image/four-3.png?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/four-3.png\");\n\n//# sourceURL=webpack://fizika/./src/image/four-3.png?");
 
 /***/ }),
 
@@ -377,7 +377,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/four-4.png\");\n\n//# sourceURL=webpack://fizika/./src/image/four-4.png?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/four-4.png\");\n\n//# sourceURL=webpack://fizika/./src/image/four-4.png?");
 
 /***/ }),
 
@@ -388,7 +388,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/grid-half-big.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/grid-half-big.jpg?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/grid-half-big.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/grid-half-big.jpg?");
 
 /***/ }),
 
@@ -399,7 +399,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/insta1.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/insta1.jpg?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/insta1.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/insta1.jpg?");
 
 /***/ }),
 
@@ -410,7 +410,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/insta2.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/insta2.jpg?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/insta2.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/insta2.jpg?");
 
 /***/ }),
 
@@ -421,7 +421,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/item-card-1.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/item-card-1.jpg?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/item-card-1.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/item-card-1.jpg?");
 
 /***/ }),
 
@@ -432,7 +432,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/item-card-2.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/item-card-2.jpg?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/item-card-2.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/item-card-2.jpg?");
 
 /***/ }),
 
@@ -443,7 +443,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/item-card-3.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/item-card-3.jpg?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/item-card-3.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/item-card-3.jpg?");
 
 /***/ }),
 
@@ -454,7 +454,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/item-card-4.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/item-card-4.jpg?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/item-card-4.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/item-card-4.jpg?");
 
 /***/ }),
 
@@ -465,7 +465,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/logo-big.png\");\n\n//# sourceURL=webpack://fizika/./src/image/logo-big.png?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/logo-big.png\");\n\n//# sourceURL=webpack://fizika/./src/image/logo-big.png?");
 
 /***/ }),
 
@@ -476,7 +476,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/logo-small.png\");\n\n//# sourceURL=webpack://fizika/./src/image/logo-small.png?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/logo-small.png\");\n\n//# sourceURL=webpack://fizika/./src/image/logo-small.png?");
 
 /***/ }),
 
@@ -487,7 +487,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/loyalty.png\");\n\n//# sourceURL=webpack://fizika/./src/image/loyalty.png?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/loyalty.png\");\n\n//# sourceURL=webpack://fizika/./src/image/loyalty.png?");
 
 /***/ }),
 
@@ -498,7 +498,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/main-2.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/main-2.jpg?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/main-2.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/main-2.jpg?");
 
 /***/ }),
 
@@ -509,7 +509,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/mian-1.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/mian-1.jpg?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/mian-1.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/mian-1.jpg?");
 
 /***/ }),
 
@@ -520,7 +520,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/mobile-four.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/mobile-four.jpg?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/mobile-four.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/mobile-four.jpg?");
 
 /***/ }),
 
@@ -531,7 +531,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/new.png\");\n\n//# sourceURL=webpack://fizika/./src/image/new.png?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/new.png\");\n\n//# sourceURL=webpack://fizika/./src/image/new.png?");
 
 /***/ }),
 
@@ -542,7 +542,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/news-1.png\");\n\n//# sourceURL=webpack://fizika/./src/image/news-1.png?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/news-1.png\");\n\n//# sourceURL=webpack://fizika/./src/image/news-1.png?");
 
 /***/ }),
 
@@ -553,7 +553,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/news-2.png\");\n\n//# sourceURL=webpack://fizika/./src/image/news-2.png?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/news-2.png\");\n\n//# sourceURL=webpack://fizika/./src/image/news-2.png?");
 
 /***/ }),
 
@@ -564,7 +564,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/news-slider.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/news-slider.jpg?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/news-slider.jpg\");\n\n//# sourceURL=webpack://fizika/./src/image/news-slider.jpg?");
 
 /***/ }),
 
@@ -575,7 +575,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/sumki.png\");\n\n//# sourceURL=webpack://fizika/./src/image/sumki.png?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/sumki.png\");\n\n//# sourceURL=webpack://fizika/./src/image/sumki.png?");
 
 /***/ }),
 
@@ -586,7 +586,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/sumki3.png\");\n\n//# sourceURL=webpack://fizika/./src/image/sumki3.png?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/sumki3.png\");\n\n//# sourceURL=webpack://fizika/./src/image/sumki3.png?");
 
 /***/ }),
 
@@ -597,7 +597,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"assets/images/sumki4.png\");\n\n//# sourceURL=webpack://fizika/./src/image/sumki4.png?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"/images/sumki4.png\");\n\n//# sourceURL=webpack://fizika/./src/image/sumki4.png?");
 
 /***/ }),
 
@@ -650,7 +650,7 @@ eval("\n\n/* eslint-disable */\nfunction normalizeUrl(pathComponents) {\n  retur
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n    if(true) {\n      // 1623081926270\n      var cssReload = __webpack_require__(/*! ./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ \"./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"publicPath\":\"\",\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  \n\n//# sourceURL=webpack://fizika/./node_modules/owl.carousel/dist/assets/owl.carousel.css?");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n    if(true) {\n      // 1623099175798\n      var cssReload = __webpack_require__(/*! ./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ \"./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"publicPath\":\"\",\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  \n\n//# sourceURL=webpack://fizika/./node_modules/owl.carousel/dist/assets/owl.carousel.css?");
 
 /***/ }),
 
@@ -661,7 +661,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n    if(true) {\n      // 1623081926277\n      var cssReload = __webpack_require__(/*! ./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ \"./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"publicPath\":\"\",\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  \n\n//# sourceURL=webpack://fizika/./node_modules/owl.carousel/dist/assets/owl.theme.default.css?");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n    if(true) {\n      // 1623099175815\n      var cssReload = __webpack_require__(/*! ./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ \"./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"publicPath\":\"\",\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  \n\n//# sourceURL=webpack://fizika/./node_modules/owl.carousel/dist/assets/owl.theme.default.css?");
 
 /***/ }),
 
@@ -672,7 +672,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n    if(true) {\n      // 1623081926286\n      var cssReload = __webpack_require__(/*! ./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ \"./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"publicPath\":\"\",\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  \n\n//# sourceURL=webpack://fizika/./src/jquery-ui-1.12.1.custom/jquery-ui.css?");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n    if(true) {\n      // 1623099175810\n      var cssReload = __webpack_require__(/*! ./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ \"./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"publicPath\":\"\",\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  \n\n//# sourceURL=webpack://fizika/./src/jquery-ui-1.12.1.custom/jquery-ui.css?");
 
 /***/ }),
 
@@ -683,7 +683,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n    if(true) {\n      // 1623081926298\n      var cssReload = __webpack_require__(/*! ./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ \"./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"publicPath\":\"\",\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  \n\n//# sourceURL=webpack://fizika/./src/jquery-ui-1.12.1.custom/jquery-ui.theme.css?");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n    if(true) {\n      // 1623099175826\n      var cssReload = __webpack_require__(/*! ./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ \"./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"publicPath\":\"\",\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  \n\n//# sourceURL=webpack://fizika/./src/jquery-ui-1.12.1.custom/jquery-ui.theme.css?");
 
 /***/ }),
 
@@ -694,7 +694,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n    if(true) {\n      // 1623081926391\n      var cssReload = __webpack_require__(/*! ./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ \"./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"publicPath\":\"\",\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  \n\n//# sourceURL=webpack://fizika/./src/custom-select/custom-select.scss?");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n    if(true) {\n      // 1623099175918\n      var cssReload = __webpack_require__(/*! ./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ \"./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"publicPath\":\"\",\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  \n\n//# sourceURL=webpack://fizika/./src/custom-select/custom-select.scss?");
 
 /***/ }),
 
@@ -705,7 +705,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n    if(true) {\n      // 1623081926705\n      var cssReload = __webpack_require__(/*! ./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ \"./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"publicPath\":\"\",\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  \n\n//# sourceURL=webpack://fizika/./src/style/scss/index.scss?");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n    if(true) {\n      // 1623099176261\n      var cssReload = __webpack_require__(/*! ./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ \"./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"publicPath\":\"\",\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  \n\n//# sourceURL=webpack://fizika/./src/style/scss/index.scss?");
 
 /***/ }),
 
@@ -813,7 +813,7 @@ eval("/* provided dependency */ var jQuery = __webpack_require__(/*! jquery */ \
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("df93956e50af4c5c3419")
+/******/ 		__webpack_require__.h = () => ("9df862ea3774fc2788a0")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -1277,7 +1277,7 @@ eval("/* provided dependency */ var jQuery = __webpack_require__(/*! jquery */ \
 /******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
 /******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
 /******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
-/******/ 		__webpack_require__.p = scriptUrl;
+/******/ 		__webpack_require__.p = scriptUrl + "../";
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/css loading */
