@@ -150,7 +150,7 @@ Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/bundle.js?ver=371827");
                         array(
                             "COMPONENT_TEMPLATE" => ".default",
                             "ChoiceYeare" => "2021",
-                            "ChoiceText" => " Afina. Все права защищены"
+                            "ChoiceText" => "Afina. Все права защищены"
                         ),
                         false
                     );?>
