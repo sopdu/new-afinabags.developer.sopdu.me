@@ -62,7 +62,7 @@ Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/bundle.js?ver=371827");
                     <a href="mailto:info@afinabags.ru">info@afinabags.ru</a>
                 </div>
             </div>
-            <a href="#" class="footer-info-developer">Разработано в Sopdu</a>
+            <a href="https://sopdu.org" class="footer-info-developer">Разработано в<br />Интернет-Лаборатории sopdu</a>
         </div>
         <div class="footer-content">
             <div class="footer-content-top">
@@ -143,7 +143,18 @@ Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/bundle.js?ver=371827");
                 </div>
             </div>
             <div class="footer-content-bottom">
-                <div class="footer-content-bottom-copyright">© 2021 Afina. Все права защищены</div>
+                <div class="footer-content-bottom-copyright">
+                    <?$APPLICATION->IncludeComponent(
+                        "sopdu:copyright",
+                        ".default",
+                        array(
+                            "COMPONENT_TEMPLATE" => ".default",
+                            "ChoiceYeare" => "2021",
+                            "ChoiceText" => " Afina. Все права защищены"
+                        ),
+                        false
+                    );?>
+                </div>
                 <?$APPLICATION->IncludeComponent(
                     "sopdu:simple_link",
                     ".default",
