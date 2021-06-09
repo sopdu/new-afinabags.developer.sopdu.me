@@ -149,6 +149,12 @@
                 </div>
                 <div class="footer-content-top__form">
                     <!-- Кастом кормы -->
+                    <?$APPLICATION->IncludeComponent(
+                        "sopdu:about_discount",
+                        "",
+                        Array()
+                    );?>
+                    <?/*
                     <div class="footer-content-top__form-wrap">
                         <div class="footer-content-top__form-title">Узнайте первыми о&nbsp;новинках и скидках</div>
                         <form action="#" class="footer-content-top__form-container">
@@ -166,6 +172,7 @@
                             </div>
                         </form>
                     </div>
+                    */?>
                     <!-- Кастом кормы -->
                     <div class="footer-content-top-up">
                         <div class="footer-content-top-up-text"><?=GetMessage("sopduFooterButtonUp")?> </div>
