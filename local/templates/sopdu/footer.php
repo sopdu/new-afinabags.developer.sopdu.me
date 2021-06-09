@@ -1,8 +1,4 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();?>
-<?
-use Bitrix\Main\Page\Asset;
-Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/bundle.js?ver=371827");
-?>
 <footer class="footer ">
     <div class="footer-wrap container">
         <div class="footer-info">
