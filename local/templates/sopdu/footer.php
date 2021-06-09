@@ -186,8 +186,5 @@ Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/bundle.js?ver=371827");
     </div>
 </footer>
 </body>
-<?
-#use Bitrix\Main\Page\Asset;
-Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/bundle.js?ver=371827");
-?>
+<script defer src="<?=SITE_TEMPLATE_PATH?>/js/bundle.js?ver=371827"></script></body>
 </html>
