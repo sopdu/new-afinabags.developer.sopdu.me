@@ -51,29 +51,53 @@ Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/bundle.js?ver=371827");
                 </a>
             </div>
             <div class="footer-info__item">
-                <div class="title">Телефон</div>
+                <div class="title"><?=GetMessage("sopduFooterPhone")?></div>
                 <div class="value">
-                    <a href="tel:+70000000000">+7 000 000-00-00</a>
+                    <a href="<?=$sopdu->phone($_SERVER["DOCUMENT_ROOT"].'/local/include/phone.php')?>">
+                        <?$APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            ".default",
+                            array(
+                                "COMPONENT_TEMPLATE" => ".default",
+                                "AREA_FILE_SHOW" => "file",
+                                "PATH" => "/local/include/phone.php",
+                                "EDIT_TEMPLATE" => "standard.php"
+                            ),
+                            false
+                        );?>
+                    </a>
                 </div>
             </div>
             <div class="footer-info__item">
-                <div class="title">Почта</div>
+                <div class="title"><?=GetMessage("sopduFooterEmail")?></div>
                 <div class="value">
-                    <a href="mailto:info@afinabags.ru">info@afinabags.ru</a>
+                    <a href="mailto:<?require ($_SERVER["DOCUMENT_ROOT"].'/local/include/email.php')?>">
+                        <?$APPLICATION->IncludeComponent(
+                            "bitrix:main.include",
+                            ".default",
+                            array(
+                                "COMPONENT_TEMPLATE" => ".default",
+                                "AREA_FILE_SHOW" => "file",
+                                "PATH" => "/local/include/email.php",
+                                "EDIT_TEMPLATE" => "standard.php"
+                            ),
+                            false
+                        );?>
+                    </a>
                 </div>
             </div>
-            <a href="https://sopdu.org" class="footer-info-developer">Разработано в Sopdu</a>
+            <a href="<?=GetMessage("sopduFooterDeveloperLink")?>" class="footer-info-developer"><?=GetMessage("sopduFooterDeveloperText")?></a>
         </div>
         <div class="footer-content">
             <div class="footer-content-top">
                 <div class="footer-content-top-menu">
-                    <div class="footer-content-top-menu__title">Каталог
+                    <div class="footer-content-top-menu__title"><?=GetMessage("sopduFooterMenuBottomCatalog")?>
                         <span class="footer-content-top-menu__title-icon">
-                                <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12.6292 0.750001L7 10.5L1.37083 0.75L12.6292 0.750001Z" stroke="#D5D7DC" stroke-width="0.5"/>
-</svg>
-
-                            </span></div>
+                            <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.6292 0.750001L7 10.5L1.37083 0.75L12.6292 0.750001Z" stroke="#D5D7DC" stroke-width="0.5"/>
+                            </svg>
+                        </span>
+                    </div>
                     <div class="footer-content-top-menu__list">
                         <a href="#" class="footer-content-top-menu__list-item">Все сумки</a>
                         <a href="#" class="footer-content-top-menu__list-item">Новинки</a>
@@ -83,35 +107,60 @@ Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/bundle.js?ver=371827");
                     </div>
                 </div>
                 <div class="footer-content-top-menu">
-                    <div class="footer-content-top-menu__title">Клиентам
+                    <div class="footer-content-top-menu__title"><?=GetMessage("sopduFooterMenuBottomClient")?>
                         <span class="footer-content-top-menu__title-icon">
-                                <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12.6292 0.750001L7 10.5L1.37083 0.75L12.6292 0.750001Z" stroke="#D5D7DC" stroke-width="0.5"/>
-</svg>
-
-                            </span></div>
-                    <div class="footer-content-top-menu__list">
-                        <a href="#" class="footer-content-top-menu__list-item">Доставка</a>
-                        <a href="#" class="footer-content-top-menu__list-item">Обмен и возврат</a>
-                        <a href="#" class="footer-content-top-menu__list-item">Оплата</a>
-                        <a href="#" class="footer-content-top-menu__list-item">Вопросы и ответы</a>
-                        <a href="#" class="footer-content-top-menu__list-item">Система лояльности</a>
+                            <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.6292 0.750001L7 10.5L1.37083 0.75L12.6292 0.750001Z" stroke="#D5D7DC" stroke-width="0.5"/>
+                            </svg>
+                        </span>
                     </div>
+                    <?$APPLICATION->IncludeComponent(
+                        "bitrix:menu",
+                        "bottom",
+                        array(
+                            "ALLOW_MULTI_SELECT" => "N",
+                            "CHILD_MENU_TYPE" => "left",
+                            "DELAY" => "N",
+                            "MAX_LEVEL" => "1",
+                            "MENU_CACHE_GET_VARS" => array(
+                            ),
+                            "MENU_CACHE_TIME" => "3600",
+                            "MENU_CACHE_TYPE" => "N",
+                            "MENU_CACHE_USE_GROUPS" => "Y",
+                            "ROOT_MENU_TYPE" => "bottom_client",
+                            "USE_EXT" => "N",
+                            "COMPONENT_TEMPLATE" => "bottom"
+                        ),
+                        false
+                    );?>
                 </div>
                 <div class="footer-content-top-menu">
-                    <div class="footer-content-top-menu__title">AFINA
+                    <div class="footer-content-top-menu__title"><?=GetMessage("sopduFooterMenuBottomAfina")?>
                         <span class="footer-content-top-menu__title-icon">
-                                <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12.6292 0.750001L7 10.5L1.37083 0.75L12.6292 0.750001Z" stroke="#D5D7DC" stroke-width="0.5"/>
-</svg>
-
-                            </span>
+                            <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.6292 0.750001L7 10.5L1.37083 0.75L12.6292 0.750001Z" stroke="#D5D7DC" stroke-width="0.5"/>
+                            </svg>
+                        </span>
                     </div>
-                    <div class="footer-content-top-menu__list">
-                        <a href="#" class="footer-content-top-menu__list-item">О бренде</a>
-                        <a href="#" class="footer-content-top-menu__list-item">Новости</a>
-                        <a href="#" class="footer-content-top-menu__list-item">Реквизиты</a>
-                    </div>
+                    <?$APPLICATION->IncludeComponent(
+                        "bitrix:menu",
+                        "bottom",
+                        array(
+                            "COMPONENT_TEMPLATE" => "bottom",
+                            "ROOT_MENU_TYPE" => "bottom_afina",
+                            "MENU_CACHE_TYPE" => "N",
+                            "MENU_CACHE_TIME" => "3600",
+                            "MENU_CACHE_USE_GROUPS" => "Y",
+                            "MENU_CACHE_GET_VARS" => array(
+                            ),
+                            "MAX_LEVEL" => "1",
+                            "CHILD_MENU_TYPE" => "left",
+                            "USE_EXT" => "N",
+                            "DELAY" => "N",
+                            "ALLOW_MULTI_SELECT" => "N"
+                        ),
+                        false
+                    );?>
                 </div>
                 <div class="footer-content-top__form">
                     <!-- Кастом кормы -->
