@@ -148,7 +148,6 @@
                     );?>
                 </div>
                 <div class="footer-content-top__form">
-                    <!-- Кастом кормы -->
                     <?$APPLICATION->IncludeComponent(
                         "sopdu:about_discount",
                         "",
