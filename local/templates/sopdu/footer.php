@@ -62,7 +62,7 @@ Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/bundle.js?ver=371827");
                     <a href="mailto:info@afinabags.ru">info@afinabags.ru</a>
                 </div>
             </div>
-            <a href="https://sopdu.org" class="footer-info-developer">Разработано в<br />Интернет-Лаборатории sopdu</a>
+            <a href="https://sopdu.org" class="footer-info-developer">Разработано в Sopdu</a>
         </div>
         <div class="footer-content">
             <div class="footer-content-top">
@@ -114,6 +114,7 @@ Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/bundle.js?ver=371827");
                     </div>
                 </div>
                 <div class="footer-content-top__form">
+                    <!-- Кастом кормы -->
                     <div class="footer-content-top__form-wrap">
                         <div class="footer-content-top__form-title">Узнайте первыми о&nbsp;новинках и скидках</div>
                         <form action="#" class="footer-content-top__form-container">
@@ -131,8 +132,9 @@ Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/js/bundle.js?ver=371827");
                             </div>
                         </form>
                     </div>
+                    <!-- Кастом кормы -->
                     <div class="footer-content-top-up">
-                        <div class="footer-content-top-up-text">Вернуться на верх </div>
+                        <div class="footer-content-top-up-text"><?=GetMessage("sopduFooterButtonUp")?> </div>
                         <div class="footer-content-top-up-icon">
                             <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M22.5 37.9688V7.03125" stroke="#777777" stroke-linecap="round" stroke-linejoin="round"/>
