@@ -2628,6 +2628,10 @@ html {
   top: 50%;
   right: 0;
   transform: translateY(-50%);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
 }
 .footer-content-top__form-input::-moz-placeholder {
   font-family: "SangBleu";
