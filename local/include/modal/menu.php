@@ -12,39 +12,38 @@
                     </svg>
                 </div>
                 <div class="menu-modal-wrap-rel-container">
-
                     <section class="menu-block">
                         <div class="container">
                             <a href="#" class="menu-block-item">
                                 <div class="menu-block-item__image">
-                                    <img src="./images/sumki.png" alt="">
+                                    <img src="<?=SITE_TEMPLATE_PATH?>/images/sumki.png" alt="">
                                 </div>
                                 <div class="menu-block-item__text">Все сумки</div>
                             </a>
                             <a href="#" class="menu-block-item">
                                 <div class="menu-block-item__image">
-                                    <img src="./images/new.png" alt="">
+                                    <img src="<?=SITE_TEMPLATE_PATH?>/images/new.png" alt="">
 
                                 </div>
                                 <div class="menu-block-item__text">Новинки</div>
                             </a>
                             <a href="#" class="menu-block-item">
                                 <div class="menu-block-item__image">
-                                    <img src="./images/sumki3.png" alt="">
+                                    <img src="<?=SITE_TEMPLATE_PATH?>/images/sumki3.png" alt="">
 
                                 </div>
                                 <div class="menu-block-item__text">Сумки</div>
                             </a>
                             <a href="#" class="menu-block-item">
                                 <div class="menu-block-item__image">
-                                    <img src="./images/sumki4.png" alt="">
+                                    <img src="<?=SITE_TEMPLATE_PATH?>/images/sumki4.png" alt="">
 
                                 </div>
                                 <div class="menu-block-item__text">Рюкзаки</div>
                             </a>
                             <a href="#" class="menu-block-item">
                                 <div class="menu-block-item__image">
-                                    <img src="./images/access.png" alt="">
+                                    <img src="<?=SITE_TEMPLATE_PATH?>/images/access.png" alt="">
 
                                 </div>
                                 <div class="menu-block-item__text">Аксессуары</div>
@@ -55,11 +54,11 @@
                         <div class="menu-modal-list-item">
                             <div class="menu-modal-list-item__title">Каталог
                                 <span class="menu-modal-list-item__title-icon">
-                                <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12.6292 0.750001L7 10.5L1.37083 0.75L12.6292 0.750001Z" stroke="#D5D7DC" stroke-width="0.5"/>
-</svg>
-
-                            </span></div>
+                                    <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12.6292 0.750001L7 10.5L1.37083 0.75L12.6292 0.750001Z" stroke="#D5D7DC" stroke-width="0.5"/>
+                                    </svg>
+                                </span>
+                            </div>
                             <div class="menu-modal-list-item__list">
                                 <a href="#" class="menu-modal-list-item__list-item">Все сумки</a>
                                 <a href="#" class="menu-modal-list-item__list-item">Новинки</a>
@@ -71,35 +70,35 @@
                         <div class="menu-modal-list-item">
                             <div class="menu-modal-list-item__title">Клиентам
                                 <span class="menu-modal-list-item__title-icon">
-                                <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12.6292 0.750001L7 10.5L1.37083 0.75L12.6292 0.750001Z" stroke="#D5D7DC" stroke-width="0.5"/>
-</svg>
-
-                            </span></div>
-                            <div class="menu-modal-list-item__list">
-                                <a href="#" class="menu-modal-list-item__list-item">Доставка</a>
-                                <a href="#" class="menu-modal-list-item__list-item">Обмен и возврат</a>
-                                <a href="#" class="menu-modal-list-item__list-item">Оплата</a>
-                                <a href="#" class="menu-modal-list-item__list-item">Вопросы и ответы</a>
-                                <a href="#" class="menu-modal-list-item__list-item">Система лояльности</a>
+                                    <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12.6292 0.750001L7 10.5L1.37083 0.75L12.6292 0.750001Z" stroke="#D5D7DC" stroke-width="0.5"/>
+                                    </svg>
+                                </span>
                             </div>
+                            <?$APPLICATION->IncludeComponent("bitrix:menu", "modal", Array(
+                                "COMPONENT_TEMPLATE" => "bottom",
+                                "ROOT_MENU_TYPE" => "bottom_client",	// Тип меню для первого уровня
+                                "MENU_CACHE_TYPE" => "N",	// Тип кеширования
+                                "MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
+                                "MENU_CACHE_USE_GROUPS" => "Y",	// Учитывать права доступа
+                                "MENU_CACHE_GET_VARS" => "",	// Значимые переменные запроса
+                                "MAX_LEVEL" => "1",	// Уровень вложенности меню
+                                "CHILD_MENU_TYPE" => "left",	// Тип меню для остальных уровней
+                                "USE_EXT" => "N",	// Подключать файлы с именами вида .тип_меню.menu_ext.php
+                                "DELAY" => "N",	// Откладывать выполнение шаблона меню
+                                "ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
+                            ),
+                                false
+                            );?>
                         </div>
                         <div class="menu-modal-list-item">
                             <div class="menu-modal-list-item__title">AFINA
                                 <span class="menu-modal-list-item__title-icon">
-                                <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M12.6292 0.750001L7 10.5L1.37083 0.75L12.6292 0.750001Z" stroke="#D5D7DC" stroke-width="0.5"/>
-</svg>
-
-                            </span>
+                                    <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12.6292 0.750001L7 10.5L1.37083 0.75L12.6292 0.750001Z" stroke="#D5D7DC" stroke-width="0.5"/>
+                                    </svg>
+                                </span>
                             </div>
-                            <?/*
-                            <div class="menu-modal-list-item__list">
-                                <a href="#" class="menu-modal-list-item__list-item">О бренде</a>
-                                <a href="#" class="menu-modal-list-item__list-item">Новости</a>
-                                <a href="#" class="menu-modal-list-item__list-item">Реквизиты</a>
-                            </div>
-                            */?>
                             <?$APPLICATION->IncludeComponent("bitrix:menu", "modal", Array(
                                 "COMPONENT_TEMPLATE" => "bottom",
                                     "ROOT_MENU_TYPE" => "bottom_afina",	// Тип меню для первого уровня
