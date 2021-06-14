@@ -83,13 +83,25 @@
                             </svg>
                         </span>
                     </div>
-                    <div class="footer-content-top-menu__list">
-                        <a href="#" class="footer-content-top-menu__list-item">Все сумки</a>
-                        <a href="#" class="footer-content-top-menu__list-item">Новинки</a>
-                        <a href="#" class="footer-content-top-menu__list-item">Сумки</a>
-                        <a href="#" class="footer-content-top-menu__list-item">Рюкзаки</a>
-                        <a href="#" class="footer-content-top-menu__list-item">Аксессуары</a>
-                    </div>
+                    <?$APPLICATION->IncludeComponent(
+                        "bitrix:menu",
+                        "bottom",
+                        array(
+                            "COMPONENT_TEMPLATE" => "bottom",
+                            "ROOT_MENU_TYPE" => "catalog",
+                            "MENU_CACHE_TYPE" => "N",
+                            "MENU_CACHE_TIME" => "3600",
+                            "MENU_CACHE_USE_GROUPS" => "Y",
+                            "MENU_CACHE_GET_VARS" => array(
+                            ),
+                            "MAX_LEVEL" => "1",
+                            "CHILD_MENU_TYPE" => "left",
+                            "USE_EXT" => "Y",
+                            "DELAY" => "N",
+                            "ALLOW_MULTI_SELECT" => "N"
+                        ),
+                        false
+                    );?>
                 </div>
                 <div class="footer-content-top-menu">
                     <div class="footer-content-top-menu__title"><?=GetMessage("sopduFooterMenuBottomClient")?>

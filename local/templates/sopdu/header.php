@@ -59,20 +59,28 @@ Asset::getInstance()->addJs("https://api-maps.yandex.ru/2.1/?apikey=0b886222-0a2
                         </div>
                     </div>
                     <ul class="header-top__menu-list">
-                        <?$APPLICATION->IncludeComponent("sopdu:simple_link", "header", Array(
-                            "ACTIVE" => "Y",	// Компонет включен
-                            "LINK" => "#",	// Ссылка
-                            "TEXT" => "О бренде",	// Текст на ссылке
-                        ),
-                            false
-                        );?>
-                        <?$APPLICATION->IncludeComponent("sopdu:simple_link", "header", Array(
-                            "ACTIVE" => "Y",	// Компонет включен
-                            "LINK" => "#",	// Ссылка
-                            "TEXT" => "Доставка",	// Текст на ссылке
-                        ),
-                            false
-                        );?>
+                        <?$APPLICATION->IncludeComponent(
+	"sopdu:simple_link", 
+	"header", 
+	array(
+		"ACTIVE" => "Y",
+		"LINK" => "/klientam/kontakty.php",
+		"TEXT" => "О бренде",
+		"COMPONENT_TEMPLATE" => "header"
+	),
+	false
+);?>
+                        <?$APPLICATION->IncludeComponent(
+	"sopdu:simple_link", 
+	"header", 
+	array(
+		"ACTIVE" => "Y",
+		"LINK" => "/klientam/dostavka.php",
+		"TEXT" => "Доставка",
+		"COMPONENT_TEMPLATE" => "header"
+	),
+	false
+);?>
                     </ul>
                 </div>
                 <div class="header-top__logo">
@@ -106,26 +114,21 @@ Asset::getInstance()->addJs("https://api-maps.yandex.ru/2.1/?apikey=0b886222-0a2
                     </svg>
 
                 </div>
-                <ul class="header-top__list">
-                    <li class="header-top__list-item">
-                        <a href="#" class="header-top__list-link"><span>Все сумки</span></a>
-                    </li>
-                    <li class="header-top__list-item">
-                        <a href="#" class="header-top__list-link"><span>Новинки</span></a>
-                    </li>
-                    <li class="header-top__list-item">
-                        <a href="#" class="header-top__list-link"><span>Сумки</span></a>
-                    </li>
-                    <li class="header-top__list-item">
-                        <a href="#" class="header-top__list-link"><span>Рюкзаки</span></a>
-                    </li>
-                    <li class="header-top__list-item">
-                        <a href="#" class="header-top__list-link"><span>Аксессуары</span></a>
-                    </li>
-                    <li class="header-top__list-item">
-                        <a href="#" class="header-top__list-link"><span>Программа  лояльности</span></a>
-                    </li>
-                </ul>
+                <?$APPLICATION->IncludeComponent("bitrix:menu", "top", Array(
+                    "COMPONENT_TEMPLATE" => ".default",
+                    "ROOT_MENU_TYPE" => "top",	// Тип меню для первого уровня
+                    "MENU_CACHE_TYPE" => "N",	// Тип кеширования
+                    "MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
+                    "MENU_CACHE_USE_GROUPS" => "Y",	// Учитывать права доступа
+                    "MENU_CACHE_GET_VARS" => "",	// Значимые переменные запроса
+                    "MAX_LEVEL" => "1",	// Уровень вложенности меню
+                    "CHILD_MENU_TYPE" => "left",	// Тип меню для остальных уровней
+                    "USE_EXT" => "Y",	// Подключать файлы с именами вида .тип_меню.menu_ext.php
+                    "DELAY" => "N",	// Откладывать выполнение шаблона меню
+                    "ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
+                ),
+                    false
+                );?>
                 <div class="header-top__control">
                     <div class="header-top__control-item header-top__search ">
                         <div class="header-top__control-icon">
@@ -162,26 +165,19 @@ Asset::getInstance()->addJs("https://api-maps.yandex.ru/2.1/?apikey=0b886222-0a2
                     </div>
                 </div>
             </div>
-            <div class="header-bottom">
-                <ul class="header-bottom__list">
-                    <li class="header-bottom__list-item">
-                        <a href="#" class="header-bottom__list-link"><span>Все сумки</span></a>
-                    </li>
-                    <li class="header-bottom__list-item">
-                        <a href="#" class="header-bottom__list-link"><span>Новинки</span></a>
-                    </li>
-                    <li class="header-bottom__list-item">
-                        <a href="#" class="header-bottom__list-link"><span>Сумки</span></a>
-                    </li>
-                    <li class="header-bottom__list-item">
-                        <a href="#" class="header-bottom__list-link"><span>Рюкзаки</span></a>
-                    </li>
-                    <li class="header-bottom__list-item">
-                        <a href="#" class="header-bottom__list-link"><span>Аксессуары</span></a>
-                    </li>
-                    <li class="header-bottom__list-item">
-                        <a href="#" class="header-bottom__list-link"><span>Программа  лояльности</span></a>
-                    </li>
-                </ul>
-            </div>
+            <?$APPLICATION->IncludeComponent("bitrix:menu", "top_bottom", Array(
+                "COMPONENT_TEMPLATE" => ".default",
+                "ROOT_MENU_TYPE" => "top",	// Тип меню для первого уровня
+                "MENU_CACHE_TYPE" => "N",	// Тип кеширования
+                "MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
+                "MENU_CACHE_USE_GROUPS" => "Y",	// Учитывать права доступа
+                "MENU_CACHE_GET_VARS" => "",	// Значимые переменные запроса
+                "MAX_LEVEL" => "1",	// Уровень вложенности меню
+                "CHILD_MENU_TYPE" => "left",	// Тип меню для остальных уровней
+                "USE_EXT" => "Y",	// Подключать файлы с именами вида .тип_меню.menu_ext.php
+                "DELAY" => "N",	// Откладывать выполнение шаблона меню
+                "ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
+            ),
+                false
+            );?>
         </header>

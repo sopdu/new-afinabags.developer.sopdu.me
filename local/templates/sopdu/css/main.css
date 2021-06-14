@@ -4967,6 +4967,7 @@ html {
   justify-content: space-between;
   cursor: pointer;
   border-bottom: 1px solid #D5D7DC;
+  text-decoration: none;
 }
 .account-control-menu-item:last-child {
   border-bottom: none;
@@ -5860,6 +5861,7 @@ html {
   justify-content: space-between;
   cursor: pointer;
   border-bottom: 1px solid #D5D7DC;
+  text-decoration: none;
 }
 .client-info-menu-item:last-child {
   border-bottom: none;
